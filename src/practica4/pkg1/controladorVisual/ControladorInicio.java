@@ -14,9 +14,11 @@ import practica4.pkg1.visual.*;
 public class ControladorInicio {
     private Inicio inicio;
     private Vpersonajes visualP;
+    private Archivos archivo;
     
     public ControladorInicio(Inicio inicio){
         visualP = new Vpersonajes(this);
+        archivo = new Archivos(this);
         this.inicio = inicio;
     }
     public void ingresarVisualPersonaje(){
@@ -27,5 +29,13 @@ public class ControladorInicio {
     }
     public void cerrarInicio(){
         inicio.setVisible(false); 
+    }
+    public void iniciarPersonajes(){
+        this.cerrarInicio();
+        visualP.setVisible(true);
+    }
+    public void iniciarArchivos(){
+        this.cerrarInicio();
+        archivo.setVisible(true);
     }
 }

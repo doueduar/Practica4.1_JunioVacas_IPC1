@@ -13,12 +13,14 @@ import practica4.pkg1.controladorVisual.ControladorInicio;
  */
 public class Inicio extends javax.swing.JFrame {
 
+    private ControladorInicio ini;
     /**
      * Creates new form Inicio
      */
+    
     public Inicio() {
         initComponents();
-        ControladorInicio ini = new ControladorInicio(this);
+        ini = new ControladorInicio(this);
         ini.visualizarInicio();
     }
 
@@ -41,7 +43,6 @@ public class Inicio extends javax.swing.JFrame {
         visualTablero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(900, 800));
 
         jPanel1.setBackground(new java.awt.Color(1, 201, 242));
         jPanel1.setPreferredSize(new java.awt.Dimension(900, 800));
@@ -55,16 +56,25 @@ public class Inicio extends javax.swing.JFrame {
 
         visualPersonaje.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         visualPersonaje.setText("Personajes");
+        visualPersonaje.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visualPersonajeActionPerformed(evt);
+            }
+        });
 
         iniciarJuego.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         iniciarJuego.setText("Jugar");
-        iniciarJuego.setActionCommand("Jugar");
 
         visualEstadistica.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         visualEstadistica.setText("Estadistica");
 
         cargaArchivo.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         cargaArchivo.setText("Cargar archivo");
+        cargaArchivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cargaArchivoActionPerformed(evt);
+            }
+        });
 
         visualTablero.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         visualTablero.setText("Visualizar tablero");
@@ -125,6 +135,16 @@ public class Inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void visualPersonajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualPersonajeActionPerformed
+        // TODO add your handling code here:
+        ini.iniciarPersonajes();
+    }//GEN-LAST:event_visualPersonajeActionPerformed
+
+    private void cargaArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargaArchivoActionPerformed
+        // TODO add your handling code here:
+        ini.iniciarArchivos();
+    }//GEN-LAST:event_cargaArchivoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cargaArchivo;
