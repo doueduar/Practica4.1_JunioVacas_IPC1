@@ -5,6 +5,8 @@
  */
 package practica4.pkg1;
 
+import practica4.pkg1.visual.Inicio;
+
 /**
  *
  * @author douglas2021
@@ -16,6 +18,7 @@ public class Principal {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Inicio ini = new Inicio();
     }
     
 }
