@@ -9,17 +9,21 @@ package practica4.pkg1.Objetos.Juego;
  *
  * @author douglas2021
  */
-public class Cuadro {
+public abstract class Cuadro {
     private int fila;
     private int columna;
     private int cantidadPosicion;
     private int filaFinal;
     private int columnaFinal;
+    
 
-    public Cuadro(int fila, int columna, int cantidadPosicion, int filaFinal, int columnaFinal) {
+    public Cuadro(int fila, int columna) {
         this.fila = fila;
         this.columna = columna;
-        this.cantidadPosicion = cantidadPosicion;
+    }
+    public Cuadro(int fila, int columna, int filaFinal, int columnaFinal) {
+        this.fila = fila;
+        this.columna = columna;
         this.filaFinal = filaFinal;
         this.columnaFinal = columnaFinal;
     }
@@ -29,6 +33,8 @@ public class Cuadro {
         this.columna = columna;
         this.cantidadPosicion = cantidadPosicion;
     }
+    public abstract void ejecucion();
+    public abstract String getNombre();
 
     public int getFila() {
         return fila;

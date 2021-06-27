@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import practica4.pkg1.Objetos.Condiciones;
+import practica4.pkg1.Objetos.Juego.Cuadro;
 
 /**
  *
@@ -23,11 +24,12 @@ public class EscritorDeCondicionesBinarios {
     public void guardarCondiciones(ArrayList<Condiciones> condiciones) throws IOException,FileNotFoundException{
         FileOutputStream fileOutput; 
         ObjectOutputStream salida;
-        //ArrayList<Cuadro> = 
-        for (Condiciones condicion : condiciones) {
+        GenerarCuadros tablero = new GenerarCuadros(condiciones);
+        ArrayList<Cuadro> tableros = tablero.GenerarLosCuadros();
+        for (Cuadro cuadro : tableros) {
             fileOutput = new FileOutputStream(FILE_CONDICIONES+"/"+condicion.getNombre());
             salida = new ObjectOutputStream(fileOutput);
-            salida.writeObject(condicion);
+            salida.writeObject(cuadro);
             salida.close();
         }
     }
