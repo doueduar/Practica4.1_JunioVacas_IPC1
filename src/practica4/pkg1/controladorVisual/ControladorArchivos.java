@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import practica4.pkg1.Objetos.Condiciones;
@@ -25,26 +26,26 @@ public class ControladorArchivos {
     private EscritorDeCondicionesBinarios escritorDeCondicionesBinarios;
     private LectorDeCondicionesEnTexto lectorDeCondicionesEnTexto;
     private JTextArea impresion;
-    //private JFileChooser fileChosser;
+    private JList<String> error;
     
-    public ControladorArchivos(Archivos archivo, JTextArea impresion){
+    public ControladorArchivos(Archivos archivo, JTextArea impresion,JList<String> error){
         this.archivo =  archivo;
         this.impresion = impresion;
+        this.error = error;
+        escritorDeCondicionesBinarios = new EscritorDeCondicionesBinarios();
+        lectorDeCondicionesEnTexto = new LectorDeCondicionesEnTexto();
     }
     public void ingresarArchivos(){
         JFileChooser fileChosser = new JFileChooser();
         int seleccion = fileChosser.showOpenDialog(this.archivo);
-        
         if (seleccion == JFileChooser.APPROVE_OPTION) {
             //aqui selecciono y guardo el FILE que va a utilizar el FileReader
             File fichero = fileChosser.getSelectedFile();
-            
             try {
-                ArrayList<Condiciones> condiciones = this.lectorDeCondicionesEnTexto.leerFichero(fichero, this.impresion);
-                //this.escritorDeCondicionesBinarios.guardarVehiculo(vehiculos);
+                ArrayList<Condiciones> condition = lectorDeCondicionesEnTexto.leerFichero(fichero, this.impresion,this.error);
+                //this.escritorDeCondicionesBinarios.guardarCondiciones(condition);
             } catch (IOException ex) {
                 JOptionPane.showMessageDialog(this.archivo, "Error al leer el archivo");
-                ex.printStackTrace();
             }
         }
     }

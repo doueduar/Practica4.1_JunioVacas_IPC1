@@ -5,7 +5,6 @@
  */
 package practica4.pkg1.visual;
 
-import javax.swing.JFileChooser;
 import practica4.pkg1.controladorVisual.ControladorArchivos;
 import practica4.pkg1.controladorVisual.ControladorInicio;
 
@@ -22,7 +21,7 @@ public class Archivos extends javax.swing.JFrame {
     public Archivos(ControladorInicio inicio) {
         initComponents();
         this.inicio = inicio;
-        controladorArchivos = new ControladorArchivos(this, this.impresionArchivo);
+        controladorArchivos = new ControladorArchivos(this, impresionArchivo,impresionError);
     }
 
     /**
@@ -40,7 +39,7 @@ public class Archivos extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         impresionArchivo = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        impresionError = new javax.swing.JList<>();
         regreso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -63,12 +62,12 @@ public class Archivos extends javax.swing.JFrame {
         impresionArchivo.setRows(5);
         jScrollPane1.setViewportView(impresionArchivo);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+        impresionError.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "hola" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        jScrollPane3.setViewportView(jList1);
+        jScrollPane3.setViewportView(impresionError);
 
         regreso.setText("Regresar");
         regreso.addActionListener(new java.awt.event.ActionListener() {
@@ -109,7 +108,7 @@ public class Archivos extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 35, Short.MAX_VALUE))
         );
 
@@ -140,9 +139,9 @@ public class Archivos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea impresionArchivo;
+    private javax.swing.JList<String> impresionError;
     private javax.swing.JButton ingresarArchivo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;

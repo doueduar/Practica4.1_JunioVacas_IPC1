@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/media/douglas2021/Dou_job/junio_vaquera/Practica4.1/src/practica4/pkg1/Principal.java</file>
-            <file>file:/media/douglas2021/Dou_job/junio_vaquera/Practica4.1/src/practica4/pkg1/visual/Vpersonajes.java</file>
-            <file>file:/media/douglas2021/Dou_job/junio_vaquera/Practica4.1/src/practica4/pkg1/controladorVisual/ControladorInicio.java</file>
+            <file>file:/media/douglas2021/Dou_job/junio_vaquera/Practica4.1/src/practica4/pkg1/OperadorArchivos/LectorDeCondicionesEnTexto.java</file>
+            <file>file:/media/douglas2021/Dou_job/junio_vaquera/Practica4.1/src/practica4/pkg1/visual/Archivos.java</file>
             <file>file:/media/douglas2021/Dou_job/junio_vaquera/Practica4.1/src/practica4/pkg1/visual/Inicio.java</file>
-            <file>file:/media/douglas2021/Dou_job/junio_vaquera/Practica4.1/src/practica4/pkg1/Objetos/Personajes.java</file>
+            <file>file:/media/douglas2021/Dou_job/junio_vaquera/Practica4.1/src/practica4/pkg1/controladorVisual/ControladorArchivos.java</file>
         </group>
     </open-files>
 </project-private>

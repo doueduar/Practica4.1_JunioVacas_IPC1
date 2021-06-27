@@ -18,11 +18,12 @@ import practica4.pkg1.Objetos.Condiciones;
  * @author douglas2021
  */
 public class EscritorDeCondicionesBinarios {
-    public static final File  FILE_CONDICIONES= new File("/media/douglas2021/Dou_job/Tercer semestre/IPC1/Nedbeans/parqueoArchivos/Binario");
+    public static final File  FILE_CONDICIONES= new File("/media/douglas2021/Dou_job/junio_vaquera/ArchivosBinarios");
     
-    public void guardarVehiculo(ArrayList<Condiciones> condiciones) throws IOException,FileNotFoundException{
+    public void guardarCondiciones(ArrayList<Condiciones> condiciones) throws IOException,FileNotFoundException{
         FileOutputStream fileOutput; 
         ObjectOutputStream salida;
+        //ArrayList<Cuadro> = 
         for (Condiciones condicion : condiciones) {
             fileOutput = new FileOutputStream(FILE_CONDICIONES+"/"+condicion.getNombre());
             salida = new ObjectOutputStream(fileOutput);
