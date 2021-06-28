@@ -5,8 +5,11 @@
  */
 package practica4.pkg1.controladorVisual;
 
+import java.awt.CardLayout;
 import javax.swing.JPanel;
 import practica4.pkg1.visual.Jugar;
+import practica4.pkg1.visual.partesJugar.JuegoTablero;
+import practica4.pkg1.visual.partesJugar.SeleccionarJugadores;
 
 /**
  *
@@ -15,11 +18,29 @@ import practica4.pkg1.visual.Jugar;
 public class ControladorJuego {
     private JPanel ventana;
     private Jugar juego;
+    private JuegoTablero tablero;
+    private SeleccionarJugadores selecJugadores;
+    private CardLayout cardLayout;
+    
     
     public ControladorJuego(Jugar juego, JPanel ventana){
-        
         this.ventana = ventana;
         this.juego = juego;
+        tablero = new JuegoTablero();
+        selecJugadores = new SeleccionarJugadores(this);
+        this.cambios();
+    }
+    public void cambios(){
+        cardLayout = new CardLayout();
+        this.ventana.setLayout(cardLayout);
+        this.ventana.add(this.selecJugadores ,"Selecionar");
+        this.ventana.add(this.tablero ,"Jugemos");
+    }
+    public void SeleccionarJugador(){
+        cardLayout.show(ventana,"Seleccionar");
+    }
+    public void MostrarTablero(){
+        cardLayout.show(this.ventana,"Jugemos");
     }
     
 }

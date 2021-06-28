@@ -82,9 +82,9 @@
                           <Component id="visualPersonaje" min="-2" pref="62" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="iniciarJuego" min="-2" pref="62" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="visualTablero" min="-2" pref="61" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                           <Component id="visualEstadistica" min="-2" pref="66" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="cargaArchivo" min="-2" pref="62" max="-2" attributes="0"/>
@@ -131,6 +131,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Jugar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iniciarJuegoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="visualEstadistica">
           <Properties>

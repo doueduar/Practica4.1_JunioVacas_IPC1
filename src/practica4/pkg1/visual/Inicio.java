@@ -64,6 +64,11 @@ public class Inicio extends javax.swing.JFrame {
 
         iniciarJuego.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         iniciarJuego.setText("Jugar");
+        iniciarJuego.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                iniciarJuegoActionPerformed(evt);
+            }
+        });
 
         visualEstadistica.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         visualEstadistica.setText("Estadistica");
@@ -109,9 +114,9 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(visualPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(iniciarJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(visualTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(21, 21, 21)
                         .addComponent(visualEstadistica, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
                         .addComponent(cargaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -145,6 +150,11 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         ini.iniciarArchivos();
     }//GEN-LAST:event_cargaArchivoActionPerformed
+
+    private void iniciarJuegoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarJuegoActionPerformed
+        // TODO add your handling code here:
+        ini.ingresarJugar();
+    }//GEN-LAST:event_iniciarJuegoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cargaArchivo;

@@ -15,11 +15,17 @@ public class ControladorInicio {
     private Inicio inicio;
     private Vpersonajes visualP;
     private Archivos archivo;
+    private Jugar juego;
     
     public ControladorInicio(Inicio inicio){
         visualP = new Vpersonajes(this);
         archivo = new Archivos(this);
+        juego = new Jugar();
         this.inicio = inicio;
+    }
+    public void ingresarJugar(){
+        this.cerrarInicio();
+        juego.setVisible(true);
     }
     public void ingresarVisualPersonaje(){
       visualP.setVisible(true);
