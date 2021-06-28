@@ -18,8 +18,8 @@ public class Avanza extends Cuadro{
         this.nombre = "Avanza/avanza"+getInstancia(); 
         Avanza.contadorInstancia++;
     }
-    public int getInstancia(){
-        return contadorInstancia;
+    public static int getInstancia(){
+        return Avanza.contadorInstancia;
     }
     @Override
     public void ejecucion() {

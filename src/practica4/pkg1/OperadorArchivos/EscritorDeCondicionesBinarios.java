@@ -27,7 +27,7 @@ public class EscritorDeCondicionesBinarios {
         GenerarCuadros tablero = new GenerarCuadros(condiciones);
         ArrayList<Cuadro> tableros = tablero.GenerarLosCuadros();
         for (Cuadro cuadro : tableros) {
-            fileOutput = new FileOutputStream(FILE_CONDICIONES+"/"+condicion.getNombre());
+            fileOutput = new FileOutputStream(FILE_CONDICIONES+"/"+cuadro.getNombre());
             salida = new ObjectOutputStream(fileOutput);
             salida.writeObject(cuadro);
             salida.close();
