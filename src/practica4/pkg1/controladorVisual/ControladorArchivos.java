@@ -43,8 +43,9 @@ public class ControladorArchivos {
             File fichero = fileChosser.getSelectedFile();
             try {
                 ArrayList<Condiciones> condition = lectorDeCondicionesEnTexto.leerFichero(fichero, this.impresion,this.error);
-                //this.escritorDeCondicionesBinarios.guardarCondiciones(condition);
+                this.escritorDeCondicionesBinarios.guardarCondiciones(condition);
             } catch (IOException ex) {
+                System.out.println("error: "+ex);
                 JOptionPane.showMessageDialog(this.archivo, "Error al leer el archivo");
             }
         }

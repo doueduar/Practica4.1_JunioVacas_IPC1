@@ -15,7 +15,7 @@ public class Subida extends Cuadro{
     
     public Subida(int fila, int columna, int filaFinal, int columnaFinal) {
         super(fila, columna, filaFinal, columnaFinal);
-        this.nombre = "Subida/subida";
+        this.nombre = "subida"+getInstancia();
         Subida.contadorInstancia++;
     }
     public static int getInstancia(){

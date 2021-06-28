@@ -5,11 +5,13 @@
  */
 package practica4.pkg1.Objetos.Juego;
 
+import java.io.Serializable;
+
 /**
  *
  * @author douglas2021
  */
-public abstract class Cuadro {
+public abstract class Cuadro implements Serializable{
     private int fila;
     private int columna;
     private int cantidadPosicion;

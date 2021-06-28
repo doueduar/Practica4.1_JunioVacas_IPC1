@@ -15,7 +15,7 @@ public class TiraDados extends Cuadro {
     
     public TiraDados(int fila, int columna) {
         super(fila, columna);
-        this.nombre = "TiraDados/tiraDados"+getInstancia();
+        this.nombre = "tiraDados"+getInstancia();
         TiraDados.contadorInstancia++;
     }
     public static int getInstancia(){

@@ -15,7 +15,7 @@ public class PierdeTurno extends Cuadro {
     
     public PierdeTurno(int fila, int columna) {
         super(fila, columna);
-        this.nombre = "PierdeTurno/pierdeTurno"+getInstancia();
+        this.nombre = "pierdeTurno"+getInstancia();
         PierdeTurno.contadorInstancia++;
     }
     public static int getInstancia(){

@@ -22,8 +22,8 @@ import practica4.pkg1.Objetos.Condiciones;
  */
 
 public class LectorDeCondicionesEnTexto {
-    
-     public ArrayList<Condiciones> leerFichero(File archivo,JTextArea text, JList<String> error) throws FileNotFoundException, IOException {
+       
+    public ArrayList<Condiciones> leerFichero(File archivo,JTextArea text, JList<String> error) throws FileNotFoundException, IOException {
         // crea el arreglo para ingresar el vehiculo
         System.out.println("estoy aqui antes de la condicion");
         ArrayList<Condiciones> condiciones = new ArrayList<>();

@@ -15,7 +15,7 @@ public class Avanza extends Cuadro{
     
     public Avanza(int fila, int columna, int cantidadPosicion) {
         super(fila, columna, cantidadPosicion);
-        this.nombre = "Avanza/avanza"+getInstancia(); 
+        this.nombre = "avanza"+getInstancia(); 
         Avanza.contadorInstancia++;
     }
     public static int getInstancia(){

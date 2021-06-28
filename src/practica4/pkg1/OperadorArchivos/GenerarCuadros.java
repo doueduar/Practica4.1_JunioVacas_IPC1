@@ -54,15 +54,17 @@ public class GenerarCuadros {
     public int Longitud(String parte){
         String [] L = parte.split(",");
         int longitud = L.length;
+        //System.out.println("logitud: "+longitud);
         return longitud;
     }
     private static int[] numeros(String[] cadena){
 	try {
+            //System.out.println("logitud: "+ cadena.length);
             int[] arreglo = new int[cadena.length];
-            for(int i=0 ; 0 < cadena.length; i++){
+            for(int i = 0 ; i < cadena.length; i++){
                 arreglo[i] = Integer.parseInt(cadena[i]);   
             }
-		return arreglo;
+            return arreglo;
 	} catch (NumberFormatException nfe){
             System.out.println("no se pudo ingresar los numeros error: "+nfe);
             return null;

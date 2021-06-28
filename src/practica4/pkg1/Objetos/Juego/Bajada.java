@@ -14,7 +14,7 @@ public class Bajada extends Cuadro{
     private String nombre;
     public Bajada(int fila, int columna, int filaFinal, int columnaFinal) {
         super(fila, columna, filaFinal, columnaFinal);
-        nombre =  "Bajada/bajada"+getInstancia();
+        nombre =  "bajada"+getInstancia();
         Bajada.contadorInstancia++;
     }
     private static int getInstancia(){

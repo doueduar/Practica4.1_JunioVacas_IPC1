@@ -15,7 +15,7 @@ public class Retrocede extends Cuadro{
     
     public Retrocede(int fila, int columna, int cantidadPosicion) {
         super(fila, columna, cantidadPosicion);
-        this.nombre = "Retroceder/retroceder"+getInstancia();
+        this.nombre = "retroceder"+getInstancia();
         Retrocede.contadorInstancia++;
     }
     public static int getInstancia( ){

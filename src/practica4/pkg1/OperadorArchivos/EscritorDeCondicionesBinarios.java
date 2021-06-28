@@ -13,6 +13,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import practica4.pkg1.Objetos.Condiciones;
 import practica4.pkg1.Objetos.Juego.Cuadro;
+import practica4.pkg1.Objetos.Personajes;
 
 /**
  *
@@ -27,11 +28,33 @@ public class EscritorDeCondicionesBinarios {
         GenerarCuadros tablero = new GenerarCuadros(condiciones);
         ArrayList<Cuadro> tableros = tablero.GenerarLosCuadros();
         for (Cuadro cuadro : tableros) {
+            System.out.println(cuadro.getNombre());
+            if(FILE_CONDICIONES.mkdirs()){
+                System.out.println("no existe lo voy a tratar de generar");
+            }else{
+                System.out.println("existe");
+            }
             fileOutput = new FileOutputStream(FILE_CONDICIONES+"/"+cuadro.getNombre());
             salida = new ObjectOutputStream(fileOutput);
             salida.writeObject(cuadro);
             salida.close();
         }
+    }
+    public static final File  FILE_PERSONAJES= new File("/media/douglas2021/Dou_job/junio_vaquera/ArchivosBinarios/Personajes");
+    
+    public void guardarPersonajes(Personajes personaje)throws IOException,FileNotFoundException{
+        FileOutputStream fileOutput; 
+        ObjectOutputStream salida;
+        if(FILE_PERSONAJES.mkdirs()){
+                System.out.println("no existe lo voy a tratar de generar");
+            }else{
+                System.out.println("existe");
+        }
+        fileOutput = new FileOutputStream(FILE_PERSONAJES+"/"+personaje.getNombre());
+        salida = new ObjectOutputStream(fileOutput);
+        salida.writeObject(personaje);
+        salida.close();
+            
     }
     
 }
