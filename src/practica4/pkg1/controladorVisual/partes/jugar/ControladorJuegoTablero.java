@@ -105,18 +105,35 @@ public class ControladorJuegoTablero {
             Logger.getLogger(ControladorJuegoTablero.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    public Color insertarColor(int i){
+        Color color = null;
+        if (i == 0) {
+            color =  Color.ORANGE;
+        }
+        if (i == 1) {
+            color =  Color.RED;
+        }
+        if (i == 2) {
+            color =  Color.PINK;
+        }
+        if (i == 3) {
+            color =  Color.YELLOW;
+        }
+        return color;
+    }
     public void fichasIniciales(){
         jugadores = new ArrayList<>();
         
         for (int i = 0; i < listado.size(); i++) {
-            jugador jugadors =  new jugador(listado.get(i),dimenciones.getColumna(),dimenciones.getFila(),i);
+            jugador jugadors =  new jugador(listado.get(i),dimenciones.getColumna()-1,dimenciones.getFila()-1,i, insertarColor(i));
             jugadores.add(jugadors);
-            ingresar(i,0,0,listado.get(i));
+            ingresar(i,0,0,listado.get(i),jugadors.getColor());
         }
     }
     public void juego(int dado,int quien){
         if (validarGanador()) {
-                jugadores.get(quien);
+            if ((jugadores.get(quien).getX() != dimenciones.getColumna()-1) || (jugadores.get(quien).getY() != dimenciones.getFila()) ) {
+                
                 int x = x(dado,jugadores.get(quien).getX());
                 int y = y(dado,jugadores.get(quien).getX(),jugadores.get(quien).getY());
                 if ((x< dimenciones.getColumna())&&(y < dimenciones.getFila())) {
@@ -124,7 +141,7 @@ public class ControladorJuegoTablero {
                     jugadores.get(quien).setX(x);
                     jugadores.get(quien).setY(y);
                 }
-                
+            }   
         }else{
             System.out.println("ya todos finalizaron la carrera");
         }
@@ -155,26 +172,26 @@ public class ControladorJuegoTablero {
         Cuadrito validar = cuadro[fx][fy];
         boolean estado = true;
         if (validar.getFicha1().getText().equals("") && estado) {
-            ingresar(0,fx,fy,jugar.getNombre());
-            ingresar(jugar.getParte()+4,jugar.getX(),jugar.getY(),"");
+            ingresar(0,fx,fy,jugar.getNombre(),jugar.getColor());
+            ingresar(jugar.getParte()+4,jugar.getX(),jugar.getY(),"",jugar.getColor());
             jugar.setParte(0);
             estado = false;
         }
         if (validar.getFicha2().getText().equals("") && estado) {
-            ingresar(1,fx,fy,jugar.getNombre());
-            ingresar(jugar.getParte()+4,jugar.getX(),jugar.getY(),"");
+            ingresar(1,fx,fy,jugar.getNombre(),jugar.getColor());
+            ingresar(jugar.getParte()+4,jugar.getX(),jugar.getY(),"",jugar.getColor());
             jugar.setParte(1);
             estado =  false;
         }
         if (validar.getFicha3().getText().equals("") && estado) {
-            ingresar(2,fx,fy,jugar.getNombre());
-            ingresar(jugar.getParte()+4,jugar.getX(),jugar.getY(),"");
+            ingresar(2,fx,fy,jugar.getNombre(),jugar.getColor());
+            ingresar(jugar.getParte()+4,jugar.getX(),jugar.getY(),"",jugar.getColor());
             jugar.setParte(2);
             estado = false;
         }
         if (validar.getFicha4().getText().equals("") && estado) {
-            ingresar(3,fx,fy,jugar.getNombre());
-            ingresar(jugar.getParte()+4,jugar.getX(),jugar.getY(),"");
+            ingresar(3,fx,fy,jugar.getNombre(),jugar.getColor());
+            ingresar(jugar.getParte()+4,jugar.getX(),jugar.getY(),"",jugar.getColor());
             jugar.setParte(3);
             estado = false;
         }
@@ -182,13 +199,13 @@ public class ControladorJuegoTablero {
     public boolean validarGanador(){
         Cuadrito validar = cuadro[dimenciones.getColumna()-1][dimenciones.getFila()-1];
         boolean estado = false;
-        if (validar.getFicha1().getText().equals("")) 
+        if (validar.getFicha1().getText().equals("") && (1 <= jugadores.size())) 
             estado = true;
-        if (validar.getFicha2().getText().equals("")) 
+        if (validar.getFicha2().getText().equals("")&&(2 <= jugadores.size())) 
             estado = true;
-        if (validar.getFicha3().getText().equals("")) 
+        if (validar.getFicha3().getText().equals("") && (3 <= jugadores.size())) 
             estado = true;
-        if (validar.getFicha4().getText().equals("")) 
+        if (validar.getFicha4().getText().equals("") && (4 <= jugadores.size())) 
             estado = true;
         return estado;
     }
@@ -198,12 +215,12 @@ public class ControladorJuegoTablero {
         }
         
     }
-    public void ingresar(int i,int x, int y,String nombre){
+    public void ingresar(int i,int x, int y,String nombre, Color color){
             
             if (i == 0) {
                 cuadro[x][y].getFicha1().setText(nombre);
                 cuadro[x][y].getFicha1().setOpaque(true);
-                cuadro[x][y].getFicha1().setBackground(Color.red);
+                cuadro[x][y].getFicha1().setBackground(color);
             }
             if (i == 4) {
                 cuadro[x][y].getFicha1().setText("");
@@ -212,7 +229,7 @@ public class ControladorJuegoTablero {
             if (i == 1) {
                 cuadro[x][y].getFicha2().setText(nombre);
                 cuadro[x][y].getFicha2().setOpaque(true);
-                cuadro[x][y].getFicha2().setBackground(Color.ORANGE);
+                cuadro[x][y].getFicha2().setBackground(color);
             }
             if (i == 5) {
                 cuadro[x][y].getFicha2().setText("");
@@ -221,7 +238,7 @@ public class ControladorJuegoTablero {
             if (i == 2) {
                 cuadro[x][y].getFicha3().setText(nombre);
                 cuadro[x][y].getFicha3().setOpaque(true);
-                cuadro[x][y].getFicha3().setBackground(Color.YELLOW);
+                cuadro[x][y].getFicha3().setBackground(color);
             }
             if (i == 6) {
                 cuadro[x][y].getFicha3().setText("");
@@ -230,7 +247,7 @@ public class ControladorJuegoTablero {
             if (i == 3) {
                 cuadro[x][y].getFicha4().setText(nombre);
                 cuadro[x][y].getFicha4().setOpaque(true);
-                cuadro[x][y].getFicha4().setBackground(Color.BLUE);
+                cuadro[x][y].getFicha4().setBackground(color);
             }
             if (i == 7) {
                 cuadro[x][y].getFicha4().setText("");

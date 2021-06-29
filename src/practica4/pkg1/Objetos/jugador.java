@@ -5,6 +5,8 @@
  */
 package practica4.pkg1.Objetos;
 
+import java.awt.Color;
+
 /**
  *
  * @author douglas2021
@@ -20,15 +22,25 @@ public class jugador {
     private static int instaciaJugador;
     private int posicion;
     private int parte;
-    public jugador(String nombre,int fx,int fy, int parte) {
+    private Color color;
+    public jugador(String nombre,int fx,int fy, int parte,Color color) {
         this.nombre = nombre;
         this.fx = fx;
         this.fy = fy;
         this.parte = parte;
         this.x = 0;
         this.y =  0;
+        this.color =  color;
     }
 
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+    
     public int getParte() {
         return parte;
     }
@@ -51,6 +63,7 @@ public class jugador {
     public void instacia(){
         if (estadoX && estadoY) {
             posicion = ++instaciaJugador;
+            System.out.println("posicion: "+posicion);
         }
     }
     public void setX(int x) {
@@ -62,7 +75,7 @@ public class jugador {
         this.x = x;
     }
 
-    public int getY() {
+    public int getY(){
         return y;
     }
 
