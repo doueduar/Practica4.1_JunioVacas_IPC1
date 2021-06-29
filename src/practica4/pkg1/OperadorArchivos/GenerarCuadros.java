@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package practica4.pkg1.OperadorArchivos;
 
 import java.util.ArrayList;
@@ -62,7 +63,11 @@ public class GenerarCuadros {
             //System.out.println("logitud: "+ cadena.length);
             int[] arreglo = new int[cadena.length];
             for(int i = 0 ; i < cadena.length; i++){
-                arreglo[i] = Integer.parseInt(cadena[i]);   
+                arreglo[i] = Integer.parseInt(cadena[i]);
+                if(arreglo[i]<0){
+                    System.out.println("no es un numero positivo");
+                    return null;
+                }
             }
             return arreglo;
 	} catch (NumberFormatException nfe){

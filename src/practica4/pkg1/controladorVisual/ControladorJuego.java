@@ -26,14 +26,14 @@ public class ControladorJuego {
     public ControladorJuego(Jugar juego, JPanel ventana){
         this.ventana = ventana;
         this.juego = juego;
-        tablero = new JuegoTablero();
-        selecJugadores = new SeleccionarJugadores(this);
         this.cambios();
     }
     public void cambios(){
+        tablero = new JuegoTablero();
+        selecJugadores = new SeleccionarJugadores(this);
         cardLayout = new CardLayout();
         this.ventana.setLayout(cardLayout);
-        this.ventana.add(this.selecJugadores ,"Selecionar");
+        this.ventana.add(this.selecJugadores ,"Seleccionar");
         this.ventana.add(this.tablero ,"Jugemos");
     }
     public void SeleccionarJugador(){
@@ -41,6 +41,9 @@ public class ControladorJuego {
     }
     public void MostrarTablero(){
         cardLayout.show(this.ventana,"Jugemos");
+    }
+    public void CrearTablero(){
+        tablero.iniciarTablero();
     }
     
 }

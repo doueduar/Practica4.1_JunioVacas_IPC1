@@ -20,7 +20,7 @@ public class ControladorInicio {
     public ControladorInicio(Inicio inicio){
         visualP = new Vpersonajes(this);
         archivo = new Archivos(this);
-        juego = new Jugar();
+        juego = new Jugar(this);
         this.inicio = inicio;
     }
     public void ingresarJugar(){

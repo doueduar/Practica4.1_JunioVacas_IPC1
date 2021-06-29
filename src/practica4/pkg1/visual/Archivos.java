@@ -20,6 +20,7 @@ public class Archivos extends javax.swing.JFrame {
      */
     public Archivos(ControladorInicio inicio) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.inicio = inicio;
         controladorArchivos = new ControladorArchivos(this, impresionArchivo,impresionError);
     }
