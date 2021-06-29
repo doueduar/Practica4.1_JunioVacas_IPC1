@@ -72,7 +72,7 @@ public class LectorDeCondicionesEnTexto {
         if(campo[0].equals("tablero")){return true;}
         if(campo[0].equals("pierdeturno")){return true;}
         if(campo[0].equals("tiradados")){return true;}
-        if(campo[0].equals("avanzar")){return true;}
+        if(campo[0].equals("avanza")){return true;}
         if(campo[0].equals("retrocede")){return true;}
         if(campo[0].equals("subida")){return true;}
         if(campo[0].equals("bajada")){return true;}

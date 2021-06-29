@@ -6,6 +6,7 @@
 package practica4.pkg1.controladorVisual;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
 import practica4.pkg1.visual.Jugar;
 import practica4.pkg1.visual.partesJugar.JuegoTablero;
@@ -29,8 +30,8 @@ public class ControladorJuego {
         this.cambios();
     }
     public void cambios(){
-        tablero = new JuegoTablero();
         selecJugadores = new SeleccionarJugadores(this);
+        tablero = new JuegoTablero(selecJugadores.listadoJugadores());
         cardLayout = new CardLayout();
         this.ventana.setLayout(cardLayout);
         this.ventana.add(this.selecJugadores ,"Seleccionar");
@@ -42,8 +43,11 @@ public class ControladorJuego {
     public void MostrarTablero(){
         cardLayout.show(this.ventana,"Jugemos");
     }
-    public void CrearTablero(){
-        tablero.iniciarTablero();
+    public void CrearTablero(ArrayList<String> listado){
+        tablero.iniciarTablero(listado);
+    }
+    public void regresar(){
+        this.selecJugadores.colocarItem();
     }
     
 }

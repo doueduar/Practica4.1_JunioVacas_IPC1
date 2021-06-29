@@ -5,6 +5,7 @@
  */
 package practica4.pkg1.visual.partesJugar;
 
+import java.util.ArrayList;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 import practica4.pkg1.controladorVisual.ControladorJuego;
@@ -26,7 +27,9 @@ public class SeleccionarJugadores extends javax.swing.JPanel {
         cSeleccionarJugadores = new ControladorSeleccionarJugadores(this);
         this.cSeleccionarJugadores.colocarItem();
     }
-
+    public void colocarItem(){
+        this.cSeleccionarJugadores.colocarItem();
+    }
     public JList<String> getListado() {
         return listado;
     }
@@ -41,6 +44,9 @@ public class SeleccionarJugadores extends javax.swing.JPanel {
 
     public void setSelector(JComboBox<String> selector) {
         this.selector = selector;
+    }
+    public ArrayList<String> listadoJugadores(){
+        return this.cSeleccionarJugadores.listadoJugadores();
     }
 
     /**
@@ -119,7 +125,7 @@ public class SeleccionarJugadores extends javax.swing.JPanel {
 
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         // TODO add your handling code here:
-        this.controladorJuego.CrearTablero();
+        this.controladorJuego.CrearTablero(this.cSeleccionarJugadores.getListad());
         this.controladorJuego.MostrarTablero();
     }//GEN-LAST:event_AceptarActionPerformed
 

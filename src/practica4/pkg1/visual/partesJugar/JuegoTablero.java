@@ -5,6 +5,8 @@
  */
 package practica4.pkg1.visual.partesJugar;
 
+import java.util.ArrayList;
+import javax.swing.JLabel;
 import practica4.pkg1.controladorVisual.partes.jugar.ControladorJuegoTablero;
 
 /**
@@ -17,16 +19,33 @@ public class JuegoTablero extends javax.swing.JPanel {
     /**
      * Creates new form JuegoTablero
      */
-    public JuegoTablero() {
+    public JuegoTablero(ArrayList<String> listado){
         initComponents();
-        control = new ControladorJuegoTablero(this,this.tablero);
+        control = new ControladorJuegoTablero(this,this.tablero,listado);
         
     }
-    public void iniciarTablero(){
+    public void iniciarTablero(ArrayList<String> listado){
         control.limpiar();
-        control.crearTablero();
+        control.crearTablero(listado);
+        cantidad = listado.size();
     }
 
+    public JLabel getDado() {
+        return Dado;
+    }
+
+    public void setDado(JLabel Dado) {
+        this.Dado = Dado;
+    }
+
+    public JLabel getVisualJugador() {
+        return visualJugador;
+    }
+
+    public void setVisualJugador(JLabel visualJugador) {
+        this.visualJugador = visualJugador;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +60,7 @@ public class JuegoTablero extends javax.swing.JPanel {
         botonTirarDado = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Dado = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(106, 174, 173));
         setPreferredSize(new java.awt.Dimension(890, 623));
@@ -76,6 +96,9 @@ public class JuegoTablero extends javax.swing.JPanel {
         Dado.setText("jLabel3");
         Dado.setPreferredSize(new java.awt.Dimension(60, 60));
 
+        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,9 +108,11 @@ public class JuegoTablero extends javax.swing.JPanel {
                 .addComponent(tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(visualJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(29, 29, 29)
+                .addComponent(visualJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(botonTirarDado, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -103,18 +128,26 @@ public class JuegoTablero extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(botonTirarDado, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(visualJugador))
+                    .addComponent(visualJugador)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    private static int instancia;
+    private int cantidad;
     private void botonTirarDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTirarDadoActionPerformed
-        // TODO add your handling code here:
+        int n = (int)(Math.random()*6+1);
+        Dado.setText(n+"");
+        control.juego(n,instancia);
+        instancia++;
+        if(instancia == cantidad)
+            instancia = 0;
     }//GEN-LAST:event_botonTirarDadoActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Dado;
     private javax.swing.JButton botonTirarDado;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel tablero;
     private javax.swing.JLabel visualJugador;

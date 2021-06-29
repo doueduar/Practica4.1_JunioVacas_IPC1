@@ -113,6 +113,7 @@ public class Jugar extends javax.swing.JFrame {
         controladorJuego.SeleccionarJugador();
         this.ini.visualizarInicio();
         this.setVisible(false);
+        this.controladorJuego.regresar();
     }//GEN-LAST:event_regresoActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
