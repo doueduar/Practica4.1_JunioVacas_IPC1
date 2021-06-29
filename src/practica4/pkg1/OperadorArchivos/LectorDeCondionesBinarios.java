@@ -29,7 +29,7 @@ public class LectorDeCondionesBinarios {
         for (int i = 0; i < archivos.length; i++) {
             String archivo = archivos[i];
             System.out.println(archivo);
-            if(!archivo.equals("Dimenciones")){
+            if(!(archivo.equals("Dimenciones"))&&!(archivo.equals("Personajes"))){
                 lector = new ObjectInputStream(new FileInputStream(EscritorDeCondicionesBinarios.FILE_CONDICIONES+"/"+archivo));
                 Cuadro v = (Cuadro)lector.readObject();
                 cuadros.add(v);
@@ -49,7 +49,7 @@ public class LectorDeCondionesBinarios {
         lector.close();
         return cuadros;
     }
-    //public static final File  FILE_PERSONAJES= new File("/media/douglas2021/Dou_job/junio_vaquera/ArchivosBinarios/Personajes");
+    public static final File  FILE_PERSONAJES= new File("/media/douglas2021/Dou_job/junio_vaquera/ArchivosBinarios/Personajes");
     
     public ArrayList<Personajes> leerPersonajes() throws FileNotFoundException,IOException,ClassNotFoundException{
         ArrayList<Personajes> personajes = new ArrayList<>();

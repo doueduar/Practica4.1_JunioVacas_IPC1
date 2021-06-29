@@ -100,7 +100,7 @@ public class Vpersonajes extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaPersonajes = new javax.swing.JTable();
-        jButton2 = new javax.swing.JButton();
+        actualizarTabla = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         nombreText = new javax.swing.JTextField();
         apellidoText = new javax.swing.JTextField();
@@ -135,7 +135,12 @@ public class Vpersonajes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaPersonajes);
 
-        jButton2.setText("Actualizar tabla");
+        actualizarTabla.setText("Actualizar tabla");
+        actualizarTabla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                actualizarTablaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -143,7 +148,7 @@ public class Vpersonajes extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(613, 613, 613)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -154,7 +159,7 @@ public class Vpersonajes extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(79, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(actualizarTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(120, 120, 120))
@@ -182,9 +187,19 @@ public class Vpersonajes extends javax.swing.JFrame {
 
         Guardar.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         Guardar.setText("Guardar");
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarActionPerformed(evt);
+            }
+        });
 
         Limpiar.setFont(new java.awt.Font("Ubuntu", 1, 14)); // NOI18N
         Limpiar.setText("Limpiar");
+        Limpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LimpiarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -298,14 +313,30 @@ public class Vpersonajes extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.inicio.visualizarInicio();
         this.setVisible(false);
+        this.cPersonajes.limpiar();
     }//GEN-LAST:event_regresarActionPerformed
+
+    private void actualizarTablaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actualizarTablaActionPerformed
+        // TODO add your handling code here:
+        this.cPersonajes.llenarTabla();
+    }//GEN-LAST:event_actualizarTablaActionPerformed
+
+    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
+        // TODO add your handling code here:
+        this.cPersonajes.ingresarJugador();
+    }//GEN-LAST:event_GuardarActionPerformed
+
+    private void LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimpiarActionPerformed
+        // TODO add your handling code here:
+        this.cPersonajes.limpiar();
+    }//GEN-LAST:event_LimpiarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Guardar;
     private javax.swing.JButton Limpiar;
+    private javax.swing.JButton actualizarTabla;
     private javax.swing.JTextField apellidoText;
     private javax.swing.JTextField idText;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

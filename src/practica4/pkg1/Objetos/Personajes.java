@@ -5,11 +5,13 @@
  */
 package practica4.pkg1.Objetos;
 
+import java.io.Serializable;
+
 /**
  *
  * @author douglas2021
  */
-public class Personajes {
+public class Personajes implements Serializable{
 private int ID;
 private String Nombre;
 private String Apellidos;

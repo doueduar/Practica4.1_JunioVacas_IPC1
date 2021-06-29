@@ -73,7 +73,7 @@ public class ControladorJuegoTablero {
             condicionales = lector.leerCondiciones();
             for (Cuadro condicion : condicionales) {
                 if ((condicion.getFila()<dimenciones.getFila())&&(condicion.getColumna()<dimenciones.getColumna()))
-                    cuadro[condicion.getFila()][condicion.getColumna()].setCuadro(condicion);
+                    cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
             }
         } catch (IOException ex) {
             Logger.getLogger(ControladorJuegoTablero.class.getName()).log(Level.SEVERE, null, ex);

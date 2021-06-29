@@ -50,7 +50,7 @@ public class EscritorDeCondicionesBinarios {
             }else{
                 System.out.println("existe");
         }
-        fileOutput = new FileOutputStream(FILE_PERSONAJES+"/"+personaje.getNombre());
+        fileOutput = new FileOutputStream(FILE_PERSONAJES+"/"+personaje.getNombre()+personaje.getID());
         salida = new ObjectOutputStream(fileOutput);
         salida.writeObject(personaje);
         salida.close();
