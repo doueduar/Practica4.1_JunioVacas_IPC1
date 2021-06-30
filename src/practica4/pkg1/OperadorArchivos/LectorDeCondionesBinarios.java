@@ -66,4 +66,21 @@ public class LectorDeCondionesBinarios {
         }
         return personajes;
     }
+    public Personajes leerPersonaje(String name)throws FileNotFoundException,IOException,ClassNotFoundException{
+        String[]  archivos = EscritorDeCondicionesBinarios.FILE_PERSONAJES.list();
+        ObjectInputStream lector;   
+        System.out.println("Archivos logitud: "+archivos.length);
+        for (int i = 0; i < archivos.length; i++) {
+            String archivo = archivos[i];
+            System.out.println(archivo);
+            if (archivo.equals(name)) {
+                lector = new ObjectInputStream(new FileInputStream(EscritorDeCondicionesBinarios.FILE_PERSONAJES+"/"+archivo));
+                Personajes v = (Personajes)lector.readObject();
+                lector.close();
+                return v;
+            }
+        }
+        System.out.println("no se encontro");
+        return null;
+    }
 }

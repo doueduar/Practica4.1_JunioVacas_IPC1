@@ -22,8 +22,7 @@ public class Subida extends Cuadro{
         return Subida.contadorInstancia;
     }
     @Override
-    public void ejecucion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void ejecucion(int fx, int fy) {
     }
 
     @Override

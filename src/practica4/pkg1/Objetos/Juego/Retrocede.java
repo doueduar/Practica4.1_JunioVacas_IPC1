@@ -22,8 +22,18 @@ public class Retrocede extends Cuadro{
         return Retrocede.contadorInstancia;
     }
     @Override
-    public void ejecucion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void ejecucion(int fx,int fy) {
+        int x = this.getColumna();
+        int y = this.getFila();
+        for (int i = 0; i < this.getCantidadPosicion(); i++) {
+            if (x == 0) {
+                y--;
+                x = fx-1;
+            }
+            x--;
+        }
+        this.setColumnaFinal(x);
+        this.setFilaFinal(y);
     }
 
     @Override

@@ -45,6 +45,22 @@ public class JuegoTablero extends javax.swing.JPanel {
     public void setVisualJugador(JLabel visualJugador) {
         this.visualJugador = visualJugador;
     }
+
+    public JLabel getInstrucciones() {
+        return instrucciones;
+    }
+
+    public void setInstrucciones(JLabel instrucciones) {
+        this.instrucciones = instrucciones;
+    }
+
+    public JLabel getInstrucciones2() {
+        return instrucciones2;
+    }
+
+    public void setInstrucciones2(JLabel instrucciones2) {
+        this.instrucciones2 = instrucciones2;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,7 +76,8 @@ public class JuegoTablero extends javax.swing.JPanel {
         botonTirarDado = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         Dado = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        instrucciones = new javax.swing.JLabel();
+        instrucciones2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(106, 174, 173));
         setPreferredSize(new java.awt.Dimension(890, 623));
@@ -96,8 +113,9 @@ public class JuegoTablero extends javax.swing.JPanel {
         Dado.setText("jLabel3");
         Dado.setPreferredSize(new java.awt.Dimension(60, 60));
 
-        jLabel1.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
-        jLabel1.setText("jLabel1");
+        instrucciones.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
+
+        instrucciones2.setFont(new java.awt.Font("Ubuntu", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -106,17 +124,22 @@ public class JuegoTablero extends javax.swing.JPanel {
             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 45, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addComponent(visualJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(visualJugador, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(instrucciones2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(instrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addComponent(botonTirarDado, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(40, 40, 40)
                 .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(142, 142, 142))
+                .addGap(149, 149, 149))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,20 +148,27 @@ public class JuegoTablero extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tablero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonTirarDado, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(visualJugador)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(Dado, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(visualJugador))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(botonTirarDado, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(instrucciones2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(instrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(42, 42, 42))
         );
     }// </editor-fold>//GEN-END:initComponents
     private static int instancia;
     private int cantidad;
     private void botonTirarDadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonTirarDadoActionPerformed
-        int n = (int)(Math.random()*6+1);
-        Dado.setText(n+"");
-        control.juego(n,instancia);
+        int n;
+        do{
+            n = (int)(Math.random()*6+1);
+            Dado.setText(n+"");
+        }while(control.juego(n,instancia));
         instancia++;
         if(instancia == cantidad)
             instancia = 0;
@@ -147,7 +177,8 @@ public class JuegoTablero extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Dado;
     private javax.swing.JButton botonTirarDado;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel instrucciones;
+    private javax.swing.JLabel instrucciones2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel tablero;
     private javax.swing.JLabel visualJugador;

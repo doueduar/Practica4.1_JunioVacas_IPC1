@@ -33,6 +33,13 @@ public class jugador {
         this.color =  color;
     }
 
+    public int getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(int posicion) {
+        this.posicion = posicion;
+    }
     public Color getColor() {
         return color;
     }
@@ -59,6 +66,9 @@ public class jugador {
 
     public int getX() {
         return x;
+    }
+    public void instanciaReset(){
+        this.instaciaJugador = 0;
     }
     public void instacia(){
         if (estadoX && estadoY) {

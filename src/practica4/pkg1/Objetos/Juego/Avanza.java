@@ -22,8 +22,18 @@ public class Avanza extends Cuadro{
         return Avanza.contadorInstancia;
     }
     @Override
-    public void ejecucion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void ejecucion(int fx,int fy) {
+        int x = this.getColumna();
+        int y = this.getFila();
+        for (int i = 0; i < this.getCantidadPosicion(); i++) {
+            if (x == fx-1) {
+                y++;
+                x = 0;
+            }
+            x++;
+        }
+        this.setColumnaFinal(x);
+        this.setFilaFinal(y);
     }
 
     @Override

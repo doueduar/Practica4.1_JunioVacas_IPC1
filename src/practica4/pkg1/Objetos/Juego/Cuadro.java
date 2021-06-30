@@ -35,7 +35,7 @@ public abstract class Cuadro implements Serializable{
         this.columna = columna;
         this.cantidadPosicion = cantidadPosicion;
     }
-    public abstract void ejecucion();
+    public abstract void ejecucion(int fx,int fy);
     public abstract String getNombre();
 
     public int getFila() {

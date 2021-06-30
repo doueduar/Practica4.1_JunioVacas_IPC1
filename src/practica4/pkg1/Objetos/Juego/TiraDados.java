@@ -22,8 +22,7 @@ public class TiraDados extends Cuadro {
         return TiraDados.contadorInstancia;
     }
     @Override
-    public void ejecucion() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void ejecucion(int fx, int fy) {
     }
 
     @Override

@@ -17,7 +17,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import practica4.pkg1.Objetos.Juego.*;
 import practica4.pkg1.Objetos.Juego.Cuadro;
+import practica4.pkg1.Objetos.Personajes;
 import practica4.pkg1.Objetos.jugador;
+import practica4.pkg1.OperadorArchivos.EscritorDeCondicionesBinarios;
 import practica4.pkg1.OperadorArchivos.LectorDeCondionesBinarios;
 import practica4.pkg1.visual.partesJugar.Cuadrito;
 import practica4.pkg1.visual.partesJugar.JuegoTablero;
@@ -30,6 +32,7 @@ public class ControladorJuegoTablero {
     JuegoTablero juego;
     JPanel tablero;
     LectorDeCondionesBinarios lector;
+    EscritorDeCondicionesBinarios escritor;
     Cuadro dimenciones;
     Cuadrito cuadro[][];
     ArrayList<String> listado;
@@ -40,9 +43,15 @@ public class ControladorJuegoTablero {
         this.tablero = tablero;
         this.listado = listado;
         lector = new LectorDeCondionesBinarios();
+        escritor =  new EscritorDeCondicionesBinarios();
     }
     public void limpiar(){
         tablero.removeAll();
+        juego.getDado().setText("");
+        juego.getInstrucciones().setText("");
+        juego.getInstrucciones2().setText("");
+        juego.getVisualJugador().setText("");
+        jugadores.get(0).instanciaReset();
     }
     public void crearTablero(ArrayList<String> listado){
         try {
@@ -84,19 +93,30 @@ public class ControladorJuegoTablero {
             condicionales = lector.leerCondiciones();
             for (Cuadro condicion : condicionales) {
                 if ((condicion.getFila()<dimenciones.getFila())&&(condicion.getColumna()<dimenciones.getColumna())){
-                    cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
-                    if (condicion instanceof Avanza) 
-                        cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Av");
-                    if (condicion instanceof Bajada) 
-                        cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Ba");
-                    if (condicion instanceof PierdeTurno) 
+           
+                    condicion.ejecucion(dimenciones.getColumna(),dimenciones.getFila());
+                    
+                    if ((condicion.getColumnaFinal()< dimenciones.getColumna()) || (condicion.getFilaFinal()<dimenciones.getFila()) ) {
+                        if ( (0 <= condicion.getColumnaFinal())&&(0<=condicion.getFilaFinal()) ) {
+                            cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
+                            
+                            if (condicion instanceof Avanza)
+                                cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Av");
+                            if (condicion instanceof Bajada) 
+                                cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Ba");
+                            if (condicion instanceof Retrocede) 
+                                cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Rt");
+                            if (condicion instanceof Subida) 
+                                cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("S");
+                        }
+                    }
+                    if (condicion instanceof PierdeTurno){ 
+                        cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
                         cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("PrT");
-                    if (condicion instanceof Retrocede) 
-                        cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Rt");
-                    if (condicion instanceof Subida) 
-                        cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("S");
-                    if (condicion instanceof Avanza) 
+                    }if (condicion instanceof TiraDados){ 
+                        cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
                         cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("TD");
+                    }
                 }
             }
         } catch (IOException ex) {
@@ -130,10 +150,14 @@ public class ControladorJuegoTablero {
             ingresar(i,0,0,listado.get(i),jugadors.getColor());
         }
     }
-    public void juego(int dado,int quien){
+    public void insertarM(String mensaje){
+        juego.getInstrucciones2().setText(juego.getInstrucciones().getText());
+        juego.getInstrucciones().setText(mensaje);
+    }
+    public boolean juego(int dado,int quien){
         if (validarGanador()) {
-            if ((jugadores.get(quien).getX() != dimenciones.getColumna()-1) || (jugadores.get(quien).getY() != dimenciones.getFila()) ) {
-                
+            if ((jugadores.get(quien).getX() != dimenciones.getColumna()-1) || (jugadores.get(quien).getY() != dimenciones.getFila()-1) ) {
+                juego.getVisualJugador().setText(jugadores.get(quien).getNombre());
                 int x = x(dado,jugadores.get(quien).getX());
                 int y = y(dado,jugadores.get(quien).getX(),jugadores.get(quien).getY());
                 if ((x< dimenciones.getColumna())&&(y < dimenciones.getFila())) {
@@ -141,10 +165,77 @@ public class ControladorJuegoTablero {
                     jugadores.get(quien).setX(x);
                     jugadores.get(quien).setY(y);
                 }
+                return condicionales(jugadores.get(quien),x,y);
             }   
         }else{
             System.out.println("ya todos finalizaron la carrera");
         }
+        return false;
+    }
+    public void escribirJugadores(){
+        try {
+            for(jugador persona: jugadores){
+                Personajes p =  lector.leerPersonaje(persona.getNombre());
+                if (persona.getPosicion() == 1) {
+                    p.setPartidasGanadas(p.getPartidasGanadas()+1);
+                    p.setPartidasJugadas(p.getPartidasJugadas()+1);
+                }else{
+                    p.setPartidasPerdidas(p.getPartidasPerdidas()+1);
+                    p.setPartidasJugadas(p.getPartidasJugadas()+1);
+                }
+                this.escritor.guardarPersonajes(p);
+            }
+            
+            
+        } catch (IOException ex) {
+            Logger.getLogger(ControladorJuegoTablero.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ControladorJuegoTablero.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
+    public boolean condicionales(jugador jugar,int x,int y){
+        Cuadro p = cuadro[x][y].getCuadro();
+        
+        if (p == null) {
+            insertarM("Se movio a: "+y+" "+x);
+            return false;
+        }
+        if (p instanceof Avanza) {
+            mover(jugar,p.getColumnaFinal(),p.getFilaFinal());
+            insertarM("Avanzo: "+p.getFilaFinal()+" "+p.getColumnaFinal());
+            jugar.setX(p.getColumnaFinal());
+            jugar.setY(p.getFilaFinal());
+            return false;
+        }
+        if (p instanceof Bajada) {
+            mover(jugar,p.getColumnaFinal(),p.getFilaFinal());
+            insertarM("Bajada: "+p.getFilaFinal()+" "+p.getColumnaFinal());
+            jugar.setX(p.getColumnaFinal());
+            jugar.setY(p.getFilaFinal());
+            return false;
+        }
+        if (p instanceof Retrocede) {
+            mover(jugar,p.getColumnaFinal(),p.getFilaFinal());
+            insertarM("Retrocede: "+p.getFilaFinal()+" "+p.getColumnaFinal());
+            jugar.setX(p.getColumnaFinal());
+            jugar.setY(p.getFilaFinal());
+            
+            return false;
+        }
+        if (p instanceof Subida) {
+            mover(jugar,p.getColumnaFinal(),p.getFilaFinal());
+            insertarM("Subida: "+p.getFilaFinal()+" "+p.getColumnaFinal());
+            jugar.setX(p.getColumnaFinal());
+            jugar.setY(p.getFilaFinal());
+            
+            return false;
+        }
+        if (p instanceof TiraDados) {
+            return true;
+        }
+        insertarM("Se movio a: "+y+" "+x);
+        return false;
     }
     public int x(int dado,int x){
         int X = x;
