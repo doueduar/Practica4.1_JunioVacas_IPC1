@@ -37,6 +37,7 @@ public abstract class Cuadro implements Serializable{
     }
     public abstract void ejecucion(int fx,int fy);
     public abstract String getNombre();
+    public abstract void setInstancia();
 
     public int getFila() {
         return fila;

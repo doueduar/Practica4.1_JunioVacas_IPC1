@@ -22,6 +22,10 @@ public class TiraDados extends Cuadro {
         return TiraDados.contadorInstancia;
     }
     @Override
+    public void setInstancia(){
+        TiraDados.contadorInstancia = 0;
+    }
+    @Override
     public void ejecucion(int fx, int fy) {
     }
 

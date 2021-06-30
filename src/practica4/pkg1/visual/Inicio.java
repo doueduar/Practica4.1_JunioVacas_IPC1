@@ -39,9 +39,7 @@ public class Inicio extends javax.swing.JFrame {
         imagenSerpiente = new javax.swing.JLabel();
         visualPersonaje = new javax.swing.JButton();
         iniciarJuego = new javax.swing.JButton();
-        visualEstadistica = new javax.swing.JButton();
         cargaArchivo = new javax.swing.JButton();
-        visualTablero = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,9 +69,6 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
 
-        visualEstadistica.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        visualEstadistica.setText("Estadistica");
-
         cargaArchivo.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
         cargaArchivo.setText("Cargar archivo");
         cargaArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -81,9 +76,6 @@ public class Inicio extends javax.swing.JFrame {
                 cargaArchivoActionPerformed(evt);
             }
         });
-
-        visualTablero.setFont(new java.awt.Font("Ubuntu", 1, 18)); // NOI18N
-        visualTablero.setText("Visualizar tablero");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,9 +87,7 @@ public class Inicio extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(visualPersonaje, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(iniciarJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(visualTablero, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                    .addComponent(visualEstadistica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cargaArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cargaArchivo, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE))
                 .addGap(83, 83, 83)
                 .addComponent(imagenSerpiente, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(105, 105, 105))
@@ -115,11 +105,7 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(visualPersonaje, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
                         .addComponent(iniciarJuego, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(visualTablero, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21)
-                        .addComponent(visualEstadistica, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(33, 33, 33)
                         .addComponent(cargaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 158, Short.MAX_VALUE))
         );
@@ -163,8 +149,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton iniciarJuego;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton visualEstadistica;
     private javax.swing.JButton visualPersonaje;
-    private javax.swing.JButton visualTablero;
     // End of variables declaration//GEN-END:variables
 }

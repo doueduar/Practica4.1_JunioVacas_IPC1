@@ -22,6 +22,10 @@ public class Subida extends Cuadro{
         return Subida.contadorInstancia;
     }
     @Override
+    public void setInstancia(){
+        Subida.contadorInstancia = 0;
+    }
+    @Override
     public void ejecucion(int fx, int fy) {
     }
 

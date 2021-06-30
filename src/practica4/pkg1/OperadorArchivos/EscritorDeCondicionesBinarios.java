@@ -34,6 +34,7 @@ public class EscritorDeCondicionesBinarios {
             }else{
                 System.out.println("existe");
             }
+            cuadro.setInstancia();
             fileOutput = new FileOutputStream(FILE_CONDICIONES+"/"+cuadro.getNombre());
             salida = new ObjectOutputStream(fileOutput);
             salida.writeObject(cuadro);

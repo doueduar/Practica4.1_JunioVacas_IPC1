@@ -17,6 +17,10 @@ public class Bajada extends Cuadro{
         nombre =  "bajada"+getInstancia();
         Bajada.contadorInstancia++;
     }
+    @Override
+    public void setInstancia(){
+        Bajada.contadorInstancia = 0;
+    }
     private static int getInstancia(){
         return Bajada.contadorInstancia;
     }

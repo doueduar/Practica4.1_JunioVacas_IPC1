@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import practica4.pkg1.Objetos.Juego.*;
 import practica4.pkg1.Objetos.Juego.Cuadro;
@@ -51,7 +52,7 @@ public class ControladorJuegoTablero {
         juego.getInstrucciones().setText("");
         juego.getInstrucciones2().setText("");
         juego.getVisualJugador().setText("");
-        jugadores.get(0).instanciaReset();
+        //jugadores.get(0).instanciaReset();
     }
     public void crearTablero(ArrayList<String> listado){
         try {
@@ -93,29 +94,32 @@ public class ControladorJuegoTablero {
             condicionales = lector.leerCondiciones();
             for (Cuadro condicion : condicionales) {
                 if ((condicion.getFila()<dimenciones.getFila())&&(condicion.getColumna()<dimenciones.getColumna())){
-           
-                    condicion.ejecucion(dimenciones.getColumna(),dimenciones.getFila());
+                    if ((condicion.getFila()!=dimenciones.getFila()-1) &&(condicion.getColumna()!=dimenciones.getColumna()-1) ) {
+                        condicion.ejecucion(dimenciones.getColumna(),dimenciones.getFila());
                     
-                    if ((condicion.getColumnaFinal()< dimenciones.getColumna()) || (condicion.getFilaFinal()<dimenciones.getFila()) ) {
-                        if ( (0 <= condicion.getColumnaFinal())&&(0<=condicion.getFilaFinal()) ) {
-                            cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
-                            
-                            if (condicion instanceof Avanza)
-                                cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Av");
-                            if (condicion instanceof Bajada) 
-                                cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Ba");
-                            if (condicion instanceof Retrocede) 
-                                cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Rt");
-                            if (condicion instanceof Subida) 
-                                cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("S");
+                        if ((condicion.getColumnaFinal()< dimenciones.getColumna()) || (condicion.getFilaFinal()<dimenciones.getFila()) ) {
+                            if ( (0 <= condicion.getColumnaFinal())&&(0<=condicion.getFilaFinal()) ) {
+                                if (condicion.getColumnaFinal()< dimenciones.getColumna() && condicion.getFilaFinal()<dimenciones.getFila()) {
+                                    cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
+    
+                                    if (condicion instanceof Avanza)
+                                        cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Av");
+                                    if (condicion instanceof Bajada) 
+                                        cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Ba");
+                                    if (condicion instanceof Retrocede) 
+                                        cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("Rt");
+                                    if (condicion instanceof Subida) 
+                                        cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("S");
+                                }
+                            }
                         }
-                    }
-                    if (condicion instanceof PierdeTurno){ 
-                        cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
-                        cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("PrT");
-                    }if (condicion instanceof TiraDados){ 
-                        cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
-                        cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("TD");
+                        if (condicion instanceof PierdeTurno){ 
+                            cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
+                            cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("PrT");
+                        }if (condicion instanceof TiraDados){ 
+                            cuadro[condicion.getColumna()][condicion.getFila()].setCuadro(condicion);
+                            cuadro[condicion.getColumna()][condicion.getFila()].getLugar().setText("TD");
+                        }
                     }
                 }
             }
@@ -143,7 +147,7 @@ public class ControladorJuegoTablero {
     }
     public void fichasIniciales(){
         jugadores = new ArrayList<>();
-        
+        contador = true;
         for (int i = 0; i < listado.size(); i++) {
             jugador jugadors =  new jugador(listado.get(i),dimenciones.getColumna()-1,dimenciones.getFila()-1,i, insertarColor(i));
             jugadores.add(jugadors);
@@ -154,6 +158,8 @@ public class ControladorJuegoTablero {
         juego.getInstrucciones2().setText(juego.getInstrucciones().getText());
         juego.getInstrucciones().setText(mensaje);
     }
+    boolean contador = true;
+    
     public boolean juego(int dado,int quien){
         if (validarGanador()) {
             if ((jugadores.get(quien).getX() != dimenciones.getColumna()-1) || (jugadores.get(quien).getY() != dimenciones.getFila()-1) ) {
@@ -164,11 +170,18 @@ public class ControladorJuegoTablero {
                     mover(jugadores.get(quien),x,y);
                     jugadores.get(quien).setX(x);
                     jugadores.get(quien).setY(y);
+                    return condicionales(jugadores.get(quien),x,y);
                 }
-                return condicionales(jugadores.get(quien),x,y);
             }   
         }else{
             System.out.println("ya todos finalizaron la carrera");
+            if (contador) {
+                escribirJugadores();
+                jugadores.get(quien).instanciaReset();
+                JOptionPane.showMessageDialog(this.juego, "Ya todos ingresaron a la meta puedes consultarlo en la tabla");
+                System.out.println("escribir jugadores");
+            }
+            contador = false;
         }
         return false;
     }
@@ -242,8 +255,9 @@ public class ControladorJuegoTablero {
         for (int i = 0; i < dado; i++) {
             if (X == dimenciones.getColumna()-1) {
                 X = 0;
+            }else{
+                X++;
             }
-            X++;
         }
         return X;
     }
@@ -254,8 +268,9 @@ public class ControladorJuegoTablero {
             if (X == dimenciones.getColumna()-1) {
                 Y++;
                 X =0;
+            }else{
+                X++;
             }
-            X++;
         }
         return Y;
     }

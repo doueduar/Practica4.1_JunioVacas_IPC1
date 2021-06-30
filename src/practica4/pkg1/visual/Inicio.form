@@ -58,9 +58,7 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="visualPersonaje" alignment="0" max="32767" attributes="0"/>
                       <Component id="iniciarJuego" max="32767" attributes="0"/>
-                      <Component id="visualTablero" pref="185" max="32767" attributes="0"/>
-                      <Component id="visualEstadistica" max="32767" attributes="0"/>
-                      <Component id="cargaArchivo" max="32767" attributes="0"/>
+                      <Component id="cargaArchivo" pref="185" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
                   <Component id="imagenSerpiente" min="-2" pref="413" max="-2" attributes="0"/>
@@ -82,11 +80,7 @@
                           <Component id="visualPersonaje" min="-2" pref="62" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                           <Component id="iniciarJuego" min="-2" pref="62" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="visualTablero" min="-2" pref="61" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Component id="visualEstadistica" min="-2" pref="66" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                           <Component id="cargaArchivo" min="-2" pref="62" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -135,14 +129,6 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iniciarJuegoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="visualEstadistica">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Ubuntu" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Estadistica"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JButton" name="cargaArchivo">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -153,14 +139,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cargaArchivoActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="visualTablero">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Ubuntu" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Visualizar tablero"/>
-          </Properties>
         </Component>
       </SubComponents>
     </Container>

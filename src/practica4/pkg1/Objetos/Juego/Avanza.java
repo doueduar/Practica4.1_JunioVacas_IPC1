@@ -18,8 +18,12 @@ public class Avanza extends Cuadro{
         this.nombre = "avanza"+getInstancia(); 
         Avanza.contadorInstancia++;
     }
-    public static int getInstancia(){
+    public int getInstancia(){
         return Avanza.contadorInstancia;
+    }
+    @Override
+    public void setInstancia(){
+        Avanza.contadorInstancia = 0;
     }
     @Override
     public void ejecucion(int fx,int fy) {
@@ -29,9 +33,11 @@ public class Avanza extends Cuadro{
             if (x == fx-1) {
                 y++;
                 x = 0;
+            }else{
+                x++;
             }
-            x++;
         }
+        System.out.println("posicion"+this.getColumna()+" "+this.getFila()+" avanzar "+this.getCantidadPosicion()+" se movio a la posicion "+x+" "+y);
         this.setColumnaFinal(x);
         this.setFilaFinal(y);
     }

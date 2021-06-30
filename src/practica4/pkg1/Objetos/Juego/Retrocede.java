@@ -22,6 +22,10 @@ public class Retrocede extends Cuadro{
         return Retrocede.contadorInstancia;
     }
     @Override
+    public void setInstancia(){
+        Retrocede.contadorInstancia = 0;
+    }
+    @Override
     public void ejecucion(int fx,int fy) {
         int x = this.getColumna();
         int y = this.getFila();
@@ -29,11 +33,13 @@ public class Retrocede extends Cuadro{
             if (x == 0) {
                 y--;
                 x = fx-1;
+            }else{
+                x--;
             }
-            x--;
         }
         this.setColumnaFinal(x);
         this.setFilaFinal(y);
+        System.out.println("posicion"+this.getColumna()+" "+this.getFila()+" retrocede "+this.getCantidadPosicion()+" se movio a la posicion "+x+" "+y);
     }
 
     @Override

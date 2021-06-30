@@ -21,6 +21,10 @@ public class PierdeTurno extends Cuadro {
     public static int getInstancia(){
         return PierdeTurno.contadorInstancia;
     }
+    @Override
+    public void setInstancia(){
+        PierdeTurno.contadorInstancia = 0;
+    }
     
     @Override
     public void ejecucion(int fx, int fy) {

@@ -16,6 +16,9 @@ public class Dimenciones extends Cuadro{
         super(fila, columna);
         nombre = "Dimenciones/dimenciones1";
     }
+    @Override
+    public void setInstancia(){
+    }
 
     @Override
     public void ejecucion(int fx, int fy) {
